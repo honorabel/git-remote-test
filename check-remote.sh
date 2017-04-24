@@ -25,16 +25,18 @@
 #  * (origin/master)
 #
 
+E_OK=0
+E_ERROR=1
+
+echo "Pulling latest from remote..."
+git remote update
+
 UPSTREAM='@{u}'
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
-E_OK=0
-E_ERROR=1
-
-git remote update
-
+echo "Checking if upstream has been updated..."
 if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
     exit $E_OK
