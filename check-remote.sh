@@ -37,16 +37,16 @@ git remote update
 
 if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
-    exit E_OK
+    exit $E_OK
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
-    exit E_ERROR
+    exit $E_ERROR
 elif [ $REMOTE = $BASE ]; then
     echo "Local is ahead of remote"
-    exit E_OK
+    exit $E_OK
 else
     echo "Diverged"
-    exit E_ERROR
+    exit $E_ERROR
 fi
 
 #
